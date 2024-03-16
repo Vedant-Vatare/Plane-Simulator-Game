@@ -1,4 +1,4 @@
-# Hello coder 👋,  
+#Hello coder 👋, <br>  
 This repository is made for practicing the **front end** of the web.
 i will be developing this game to have stronger grip on the many topic of **CSS** and **vanilla Javascript**.
 

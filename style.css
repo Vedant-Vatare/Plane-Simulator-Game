@@ -1,6 +1,4 @@
-:root{
-    --targetDuration:1500;
-}
+
 *{
     margin:0;
     padding: 0;
@@ -43,7 +41,8 @@ svg, img{
 }
 
 #player-plane{
-    animation: appear 1500ms ease-out forwards;
+    animation: appear  ease-out forwards;
+    animation-duration: var(--target-speed);
 }
 img.MovingRight{
     filter: drop-shadow(20px 15px 16px  black);

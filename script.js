@@ -5,12 +5,12 @@ const playArea = document.querySelector('.play_area');
 const playerWidth = player.clientWidth;
 const playAreaWidth = playArea.clientWidth;
 const playAreaHeight = playArea.clientHeight;
-let targetDuration = 4000;
-document.documentElement.style.setProperty("--target-speed", targetDuration)
+// let targetDuration = 4000;
+// document.documentElement.style.setProperty("--target-speed", targetDuration)
 let playerSpeed = 25; 
-let movingLeft = false;
 let movingRight = false;
 let movingUp = false;
+let movingLeft = false;
 let movingDown = false;
 let animationFrameId;
 
@@ -34,8 +34,8 @@ window.addEventListener("keydown", (e) => {
 
     // Start the animation loop only if it's not already running
     if (!animationFrameId) {
-        animationFrameId = window.requestAnimationFrame(updateGame);
-        console.log("animationFrameId storing. ReqAFrame() for updateGame() @109")
+        animationFrameId = window.requestAnimationFrame(movePlayer);
+        console.log("in keydown animationfram condition!");
     }
 });
 
@@ -65,6 +65,7 @@ window.addEventListener("keyup", (e) => {
 function updateGame() {
     movePlayer();
     animationFrameId = window.requestAnimationFrame(updateGame);
+    console.log("in updateGame fun.");
 }
 function movePlayer() {
     const playerX = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
@@ -86,6 +87,7 @@ function movePlayer() {
         player.style.top = playerY + playerSpeed + "px";
     }
 }
+
 function randomCoords(){
  // targets should be at any left property
 }
@@ -97,7 +99,9 @@ function shootRocket(){
    removeTarget(elem);
 }
 
-
+class createnemy {
+  
+}
 function removeTarget(target){
     setTimeout(()=>{
         target.remove();
