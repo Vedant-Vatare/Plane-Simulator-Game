@@ -15,37 +15,36 @@ let movingDown = false;
 let animationFrameId;
 
 window.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") {
+  console.log(e.key)
+  if (e.key === "ArrowLeft" || e.key === "a") {
     movingLeft = true;
   }
-  if (e.key === "ArrowRight") {
+  if (e.key === "ArrowRight" || e.key === "d") {
     movingRight = true;
   }
-  if (e.key === "ArrowUp") {
+  if (e.key === "ArrowUp" || e.key === "w") {
     movingUp = true;
   }
-  if (e.key === "ArrowDown") {
+  if (e.key === "ArrowDown" || e.key === "s") {
     movingDown = true;
   }
 
-  // Start the animation loop only if it's not already running
-  if (!animationFrameId) {
-    movePlayer();
-  }
+  // Start the animation loop
+  if (!animationFrameId) movePlayer();
 });
 
 window.addEventListener("keyup", (e) => {
   player.dataset.direction = "";
-  if (e.key === "ArrowLeft") {
+  if (e.key === "ArrowLeft" || e.key === "a") {
     movingLeft = false;
   }
-  if (e.key === "ArrowRight") {
+  if (e.key === "ArrowRight" || e.key === "d") {
     movingRight = false;
   }
-  if (e.key === "ArrowUp") {
+  if (e.key === "ArrowUp" || e.key === "w") {
     movingUp = false;
   }
-  if (e.key === "ArrowDown") {
+  if (e.key === "ArrowDown" || e.key === "s") {
     movingDown = false;
   }
 });
@@ -54,7 +53,7 @@ window.addEventListener("keyup", (e) => {
   // Stop the animation loop when no keys are pressed
   if (!movingLeft && !movingRight && !movingUp && !movingDown) {
     window.cancelAnimationFrame(animationFrameId);
-    animationFrameId = undefined;
+    animationFrameId = null;
   }
 });
 
@@ -67,22 +66,17 @@ function movePlayer() {
   );
 
   if (movingLeft && playerX > 120) {
-    console.log(playerX);
     player.style.left = playerX - playerSpeed + "px";
-    console.log("moving left")
-    player.dataset.direction = "movingLeft";
   }
-  
+
   if (movingRight && playerX + playerWidth < playAreaWidth + 70) {
     player.style.left = playerX + playerSpeed + "px";
-    console.log("moving right")
-    player.dataset.direction = "movingRight";
   }
 
   if (movingUp && playerY > 0) {
     player.style.top = playerY - playerSpeed + "px";
   }
-
+  
   if (movingDown && playerY + player.clientHeight < playAreaHeight) {
     player.style.top = playerY + playerSpeed + "px";
   }

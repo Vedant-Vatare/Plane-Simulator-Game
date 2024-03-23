@@ -1,5 +1,6 @@
 :root {
   --targetDuration: 1500;
+  --initialplayerY: 200px;
 }
 * {
   margin: 0;
@@ -38,24 +39,20 @@ img {
   min-width: 80px;
   left: 50%;
   transform-origin: center;
-  transform: translate(-50%, -50%);
+  transform: translate(0%, -50%);
   transition: all 0.1s ease;
   filter: drop-shadow(15px 7px 5px black);
   user-select: none;
 }
 
 #player-plane {
+  left:50%;
+  top:var(--initialplayerY);
+  transform: translate(-50%, 0%);
   will-change: left, right, rotate;
-  animation: appear 1500ms ease-out forwards;
+  animation: appear 1500ms ease-out ;
 }
-[data-direction="movingLeft"] {
-  filter: drop-shadow(20px 7px 5px black);
-  rotate: -7deg;
-}
-[data-direction="movingRight"] {
-  filter: drop-shadow(-15px 7px 5px black);
-  rotate: 7deg;
-}
+
 .target {
   transform: translateY(-100%);
   animation-duration: var(--targetDuration);
@@ -67,7 +64,7 @@ img {
     top: 150%;
   }
   to {
-    top: 55%;
+    top: var(--initialplayerY);
   }
 }
 @keyframes fire {
