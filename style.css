@@ -99,14 +99,3 @@ img.MovingLeft {
 
   }
 }
-@keyframes fire {
-  from {
-    top: -10vh;
-  }
-  to {
-    top: 120vh;
-  }
-}
-
-@media (max-width: 1440px) or (max-height: 3200px) {
-}

@@ -89,7 +89,7 @@ function movePlayer() {
     player.style.top = playerY - playerSpeed + "px";
   }
 
-  if (movingDown && playerY + player.clientHeight < playArea.clientHeight) {
+  if (movingDown && playerY + player.clientHeight < playArea.clientHeight + 20) {
 
     player.style.top = playerY + playerSpeed + "px";
   }
