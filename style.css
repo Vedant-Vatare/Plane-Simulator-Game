@@ -1,81 +1,106 @@
-
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    height:100vh;
-    overflow: hidden;
+body {
+  height: 100vh;
+  overflow: hidden;
 }
-.game_board{
-    background-color: rgb(231, 236, 236);
-    position: absolute;
-    inset: 0;
-    margin:2vh auto;
-    width:95vw;
+.game_board {
+  background-color: rgb(231, 236, 236);
+  position: absolute;
+  inset: 0;
+  margin: 2vh auto;
+  width: 95vw;
 }
-.obstacles{
-    position: absolute;
-    inset: 0;
-    height:100%;
-}
-
-.play_area{
-    width:100%;
-    height:50%;
-    position:absolute;
-    bottom: 0;
-    transform-style:preserve-3d;
-}
-svg, img{
-    object-fit: cover;
-    position:fixed;
-    width:12vw;  /*should cover appropriate width of devie */
-    min-width: 80px;
-    left:50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.1s ease;
-    filter: drop-shadow(11px 5px 16px  black);
-    user-select: none;
+.obstacles {
+  position: absolute;
+  inset: 0;
+  height: 100%;
 }
 
-#player-plane{
-    animation: appear  ease-out forwards;
-    animation-duration: var(--target-speed);
+.play_area {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  transform-style: preserve-3d;
 }
-img.MovingRight{
-    filter: drop-shadow(20px 15px 16px  black);
-    transform: translate(-50%, -50%) rotateY(30deg);
-}
-img.MovingLeft{
-    filter: drop-shadow(-20px 15px 16px  black);
-    transform: translate(-50%, -50%) rotateY(30deg);
-}
- .target{
-    transform: translateY(-100%);
-    animation-duration: var(--targetDuration);
-    animation: fire forwards normal;
- }
 
+.control-btns {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.control-btns .moveButton {
+  position: relative;
+  width:clamp(75px, 15vw, 100px);
+  max-width: 100px;
+}
+.control-btns #move-down{
+  margin-right: auto;
+  rotate: 180deg;
+}
+.control-btns #move-left{
+  rotate: 270deg;
+}
+.control-btns #move-right{
+  rotate: 90deg;
+}
+ 
+.moveButton:active{
+  scale: 0.9;
+}
+img {
+  object-fit: cover;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+#player-plane {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 80px;
+  width: 12vw;   /*should cover appropriate width of device */
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(11px 5px 16px black);
+  animation: appear ease-out;
+  animation-duration: var(--target-speed, 2000ms);
+}
+img.MovingRight {
+  filter: drop-shadow(20px 15px 16px black);
+  transform: translate(-50%, -50%) rotateY(30deg);
+}
+img.MovingLeft {
+  filter: drop-shadow(-20px 15px 16px black);
+  transform: translate(-50%, -50%) rotateY(30deg);
+}
+.target {
+  transform: translateY(-100%);
+  animation-duration: var(--targetDuration);
+  animation: fire forwards normal;
+}
 
 @keyframes appear {
-    from{
-        top:150%;
-    }
-    to{
-        top:55%;
-    }
+  from {
+    top: 150%;
+  }
+  to {
+    top: 50%;
+  }
 }
-@keyframes fire{
-    from{
-        top:-10vh;
-    }
-    to{
-        top:120vh;
-    }
+@keyframes fire {
+  from {
+    top: -10vh;
+  }
+  to {
+    top: 120vh;
+  }
 }
 
-@media (max-width: 1440px) or (max-height: 3200px){
-    
+@media (max-width: 1440px) or (max-height: 3200px) {
 }
