@@ -2,12 +2,14 @@ const gameBoard = document.querySelector(".game_board");
 const obstacles = document.querySelector(".obstacles");
 const player = document.querySelector("#player-plane");
 const playArea = document.querySelector(".play_area");
-const playerWidth = player.clientWidth;
-const playAreaWidth = playArea.clientWidth;
-const playAreaHeight = playArea.clientHeight;
-let targetDuration = 1500;
-document.documentElement.style.setProperty("--target-speed", targetDuration + "ms")
-let playerSpeed = 25;
+// setting player limit fro moving left && right
+const extremeLeft =
+  (document.body.clientWidth - playArea.clientWidth + player.clientWidth) / 2;
+const extremeRight =
+  document.body.clientWidth - extremeLeft - player.clientWidth / 2;
+let targetDuration = 2500;
+document.documentElement.style.setProperty("--target-speed", targetDuration + "ms");
+let playerSpeed = 35;
 let movingRight = false;
 let movingUp = false;
 let movingLeft = false;
@@ -16,7 +18,6 @@ let animationFrameId;
 
 // checking for touch device:
 if (navigator.maxTouchPoints > 0) {
-  console.log('touch deviced detected');
   document.querySelector(".control-btns").style.display = "flex";
   addEvent(document.querySelector('#move-left'), "touchstart", 'touchend');
   addEvent(document.querySelector('#move-right'), "touchstart", 'touchend');
@@ -75,11 +76,12 @@ function movePlayer() {
     window.getComputedStyle(player, null).getPropertyValue("top")
   );
 
-  if (movingLeft && playerX > 120) {
+  if (movingLeft && playerX > extremeLeft) {
     player.style.left = playerX - playerSpeed + "px";
   }
 
-  if (movingRight && playerX + playerWidth < playAreaWidth + 70) {
+  if (movingRight && playerX < extremeRight) {
+
     player.style.left = playerX + playerSpeed + "px";
   }
 
@@ -87,24 +89,10 @@ function movePlayer() {
     player.style.top = playerY - playerSpeed + "px";
   }
 
-  if (movingDown && playerY + player.clientHeight < playAreaHeight) {
+  if (movingDown && playerY + player.clientHeight < playArea.clientHeight) {
+
     player.style.top = playerY + playerSpeed + "px";
   }
   animationFrameId = window.requestAnimationFrame(movePlayer);
 }
 
-// function randomCoords() {}
-// function shootRocket() {
-//   let elem = document.createElement("img");
-//   elem.setAttribute("src", "rocket.svg");
-//   elem.className = "target rocket";
-//   obstacles.appendChild(elem);
-//   removeTarget(elem);
-// }
-
-// class createnemy {}
-// function removeTarget(target) {
-//   setTimeout(() => {
-//     target.remove();
-//   }, targetDuration + 500);
-// }

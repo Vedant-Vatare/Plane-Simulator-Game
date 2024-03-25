@@ -1,3 +1,8 @@
+
+:root {
+  --targetDuration: 1500;
+ 
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +13,7 @@ body {
   overflow: hidden;
 }
 .game_board {
-  background-color: rgb(231, 236, 236);
+  background-color: rgb(244, 246, 246);
   position: absolute;
   inset: 0;
   margin: 2vh auto;
@@ -68,7 +73,7 @@ img {
   width: 12vw;   /*should cover appropriate width of device */
   transform: translate(-50%, -50%);
   filter: drop-shadow(11px 5px 16px black);
-  animation: appear ease-out;
+  animation: appear cubic-bezier(0.6, 0.02, 0.29, 1.05);
   animation-duration: var(--target-speed, 2000ms);
 }
 img.MovingRight {
@@ -91,6 +96,7 @@ img.MovingLeft {
   }
   to {
     top: 50%;
+
   }
 }
 @keyframes fire {
